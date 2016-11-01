@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title> Thank Q 사용자 로그인</title>
+	</head>
+	<body>
+	
+		<h1> Thank Q 로그인</h1>
+		{%if form.errors %}
+		<p> 사용자 이름과 비밀번호가 일치하지 않습니다. 다시시도해보세요.</p>
+		{%endif%}
+		<form method="post" action=".">{%csrf_token%}
+		<p><label for="id_username">ID:</label>{{form.username}}</p>
+		<p><label for="id_password">PW:</label>{{form.password}}</p>
+		<input type= "hidden" name="next" value="/" />
+		<input type= "submit" value="로그인" />
+		<input type= "submit" value="회원가입" />
+		</form>
+	</body>
+</html>	

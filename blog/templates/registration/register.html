@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title> Thank Q 회원가입</title>
+	</head>
+	<body>
+	<h1> Thank Q 회원가입</h1>
+	{%if form.errors %}
+		<p>아이디가 중복되거나 비밀번호가 일치하지 않습니다.</p>
+	{%endif%}
+	<form method="post" action=".">{%csrf_token%}
+		{{form.as_p}}
+		<input type="submit" value-"가입"/>
+	</form>
+	</body>
+</html>	
