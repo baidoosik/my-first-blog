@@ -1,35 +1,47 @@
-from django.shortcuts import render
-from django.shortcuts import render_to_response
+from django.shortcuts import render, render_to_response
 from django.utils import timezone
-from .models import Post
-from django.shortcuts import render, get_object_or_404
+from .models import Post, Bookmark
+from django.shortcuts import render, get_object_or_404,redirect
 from .forms import PostForm
-from django.shortcuts import redirect
-from django.http import HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
+from django.http import HttpResponseRedirect, Http404,  HttpResponse
 from django.contrib.auth import logout
 from blog.forms import *
 from django.template import RequestContext
+from django.template.loader import get_template
+import re
+from django.contrib.auth.models import User
+from django.template import Context
+from django.contrib.auth.forms import UserCreationForm
+from django.core.urlresolvers import reverse
 
 def register_page(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if  form.is_valid():
-            user =User.objects.create_user(
-                username= form.cleaned_data['username'],
-                email= form.cleaned_data['email'],
-                password=form.cleaned_data['password1']
+    if request.method == "POST":
+        userform = UserCreationForm(request.POST)
+        if userform.is_valid():
+            userform.save()
+        
+            return HttpResponseRedirect(
+                reverse("post_list")
             )
-            return HttpResponseRedirect('/register/success/')
-    else:
-        form =RegistrationForm()
+    elif request.method == "GET":
+        userform =UserCreationForm()
 
-    variables = RequestContext(request,{
-        'form': form
-    })
+    return render(request,'registration/register.html',{"userform":userform})
 
-    return render_to_response('registration/register.html',variables)
+def user_page(request, username):
+    try:
+      user = User.objects.get(username=username)
+    except:
+      raise Http404('사용자를 찾을 수 없습니다.')
+
+    template = get_template('user_page.html')
+    variables= Context({
+        'username': username
+        })
+
+    output= template.render(variables)
+    return HttpResponse(output)
+
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')

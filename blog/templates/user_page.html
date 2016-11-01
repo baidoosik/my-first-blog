@@ -1,21 +1,13 @@
 {% load staticfiles %}
 <html>
 	<head>
-		<title> Thank Q 회원가입</title>
+		<title>Thank Q 사용자:{{user}} </title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="{% static 'css/blog.css' %}">
 		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-	<h1> Thank Q 회원가입</h1>
-	{%if userform.errors %}
-		<p>아이디가 중복되거나 비밀번호가 일치하지 않습니다.</p>
-	{%endif%}
-	<form id="register" method="post" action="{% url 'register' %}">
-	    {%csrf_token%}
-		{{userform.as_p}}
-		<input type="submit" value-"가입"/>
-	</form>
+		<h1>{{ user }}의 블로그입니다.</h1>
 	</body>
-</html>	
+<html>	
