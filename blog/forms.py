@@ -1,7 +1,7 @@
 import re
 from django.contrib.auth.models import User
 from django import forms
-from .models import Post
+from .models import Post, Comment
 from django.core.exceptions import ObjectDoesNotExist
 
 class PostForm(forms.ModelForm):
@@ -25,4 +25,10 @@ class RegistrationForm(forms.Form):
 		  User.obejects.get(username=username)
 		except ObjectDoesNotExist:
 		  return username
-		raise forms.ValidationError('이미 사용중 중인 사용자 이름!') 	
+		raise forms.ValidationError('이미 사용중 중인 사용자 이름!') 
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ('author', 'text',)	

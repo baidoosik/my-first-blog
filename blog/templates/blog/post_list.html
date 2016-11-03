@@ -1,6 +1,11 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+	<div>
+		<h1><a href="{% url 'login' %}">로그인</a>
+		<a href="{% url 'register' %}">회원가입</a>
+		<a href="{% url 'logout_page' %}">로그아웃</a></h1>
+	</div>	
     {% for post in posts %}
         <div class="post">
             <div class="date">
@@ -8,6 +13,7 @@
             </div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
+			<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
         </div>
     {% endfor %}
 {% endblock content %}
