@@ -86,7 +86,24 @@ SOCIAL_AUTH_FACEBOOK_KEY ='1601989246771022'
 SOCIAL_AUTH_FACEBOOK_SECRET = '●●●●●●●●'
 
 SESSION_SERIALIZER ='django.contrib.sessions.serializers.PickleSerializer'
-
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+# FACEBOOK_EXTENDED_PERMISSIONS = ['email', 'picture']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email, age_range'
+}
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    # 'social.pipeline.user.create_user',
+    'accounts.social.create_user', # 덮어씀
+    'accounts.social.update_avatar', # 추가함
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 

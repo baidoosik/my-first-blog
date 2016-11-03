@@ -17,7 +17,5 @@ urlpatterns = [
 	url(r'^password_change/done/$',password_change_done, name='password_change_done'),
 	url(r'^register/$',views.register_page, name='register'),
 	url(r'^user/(\w+)/$', views.user_page),
-	url(r'', include('social.apps.django_app.urls',namespace='social')),
-	url(r'', include('django.contrib.auth.urls',namespace='auth')),
 
 ]
