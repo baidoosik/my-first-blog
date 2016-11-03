@@ -75,7 +75,7 @@ TEMPLATES = [
 
 AUTHENTICATION_BACKENDS={
     'social.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBACKEND',    
+    'django.contrib.auth.backends.ModelBackend',    
 }
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL ='/'
