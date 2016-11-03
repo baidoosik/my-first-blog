@@ -4,6 +4,7 @@ from . import views
 from django.contrib.auth.views import password_change
 from django.contrib.auth.views import password_change_done
 from django.conf.urls import include
+from social.apps.django_app import urls
 
 urlpatterns = [
 	url(r'^$',views.post_list, name = 'post_list'),
