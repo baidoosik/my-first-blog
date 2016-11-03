@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'social.apps.django_app.default',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,6 +62,8 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -69,6 +72,20 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS={
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBACKEND',    
+}
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL ='/'
+SOCIAL_AUTH_URL_NAMESPACE ='social'
+
+#Facebook
+SOCIAL_AUTH_FACEBOOK_KEY ='1601989246771022'
+SOCIAL_AUTH_FACEBOOK_SECRET = '●●●●●●●●'
+
+SESSION_SERIALIZER ='django.contrib.sessions.serializers.PickleSerializer'
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 

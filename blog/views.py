@@ -21,7 +21,7 @@ def register_page(request):
             userform.save()
         
             return HttpResponseRedirect(
-                reverse("post_list")
+                reverse("login")
             )
     elif request.method == "GET":
         userform =UserCreationForm()
