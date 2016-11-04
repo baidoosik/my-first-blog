@@ -16,7 +16,6 @@
 		<h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
-	<hr>
 	{% for comment in post.comments.all %}
 		<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 		{% if user.is_authenticated or comment.approved_comment %}
