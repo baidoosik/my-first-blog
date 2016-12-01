@@ -1,7 +1,7 @@
-{% extends 'blog/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <div class="post">
+    <div class="post" enctype="multipart/form-data">
 		{% if post.published_date %}
 			<div class="date">
 				{{ post.published_date }}
@@ -14,11 +14,13 @@
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
 		<h1>{{ post.title }}</h1>
+		<p><img src="{{ post.image_file.url }}"></p>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
 	<hr>
+	<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 	{% for comment in post.comments.all %}
-		<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+		
 		{% if user.is_authenticated or comment.approved_comment %}
 		<div class="comment">
 			<div class="date">

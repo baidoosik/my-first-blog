@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from django.contrib.auth.views import login 
+from django.contrib.auth.views import login
 from . import views
 from django.contrib.auth.views import password_change
 from django.contrib.auth.views import password_change_done
@@ -7,7 +7,8 @@ from django.conf.urls import include
 
 
 urlpatterns = [
-	url(r'^$',views.post_list, name = 'post_list'),
+	url(r'^$',views.first_view,name='first_view'),
+	url(r'^post/list$',views.post_list, name = 'post_list'),
 	url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
 	url(r'^post/new/$', views.post_new, name='post_new'),
 	url(r'^post/(?P<pk>[0-9]+)/edit/$', views.post_edit, name='post_edit'),

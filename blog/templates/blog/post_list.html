@@ -1,7 +1,7 @@
-{% extends 'blog/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-	<div>	
+	<div style="float:right;">	
 		<h1><a href="{% url 'login' %}">로그인</a>
 		<a href="{% url 'register' %}">회원가입</a>
 		{% if user.is_authenticated %}
@@ -14,7 +14,8 @@
                 {{ post.published_date }}
             </div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
+            <p><img src="{{ post.image_file.url }}"</p>
+			<p>{{ post.text|linebreaksbr }}</p>
 			<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
         </div>
     {% endfor %}
