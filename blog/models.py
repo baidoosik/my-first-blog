@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from image_cropping import ImageRatioField
+#from image_cropping import ImageRatioField
 """
 from categories.registration import register_fk
 
