@@ -38,8 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-
-
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,6 +68,12 @@ TEMPLATES = [
         },
     },
 ]
+
+"""
+django에서 template을 찾을 때 INSTALLED_APPS에 나온 경로와
+(예를 들면 내가 blog등록 해놨으니깐 blog/templates를 검색), Templates dirs에서
+등록해놓은 경로를 순서대로 검색함
+"""
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -110,6 +114,7 @@ STATICFILES_DIRS은 개발 단계에서 사용하는 정적 파일이 위치한 
  """
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'platz'),
 
 )
 

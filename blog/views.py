@@ -17,6 +17,9 @@ from django.contrib.auth.decorators import login_required
 def first_view(request):
     return render(request,'registration/first.html')
 
+def sample_view(request):
+    return render(request,'3col/index.html')
+
 def register_page(request):
     if request.method == "POST":
         userform = UserCreationForm(request.POST)
