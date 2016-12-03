@@ -120,7 +120,7 @@ STATICFILES_DIRS = (
 
 #웹 페이지에서 사용할 정적 파일의 최상위 url 경로
 # 실제 파일이나 디렉토리가 아닌 url로만 존재
-STATIC_URL = '/staticfile/'
+STATIC_URL = '/static/'
 
 
 #Django 프로젝트에서 사용하는 모든 정적 파일을 한 곳에 모아놓는 경로
