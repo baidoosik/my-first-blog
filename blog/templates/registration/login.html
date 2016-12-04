@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base2.html' %}
 
 {% block content %}
 	<div>
@@ -12,7 +12,7 @@
 		<p><label for="id_password">PW:</label>{{form.password}}</p>
 		<input type= "hidden" name="next" value="/" />
 		<input type= "submit" value="로그인" />
-		<input type= "submit" value="회원가입" />
+		<a class="btn btn-default" href="{% url 'register' %}">회원가입</a>
 		</form>
 	</div>
 {% endblock %}
