@@ -20,12 +20,8 @@ if settings.DEBUG:
         settings.STATIC_URL, document_root=settings.STATIC_ROOT
     )
 """
-
-if settings.DEBUG:
-    urlpatterns += [
-        url(r'^uploads/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-]
-if settings.DEBUG:
-    urlpatterns += [
+urlpatterns += [
+        url(r'^uploads/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),]
+urlpatterns += [
         url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
