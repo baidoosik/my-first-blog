@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 #한 곳에 모으는 기능은 collectstatic 명령어로 수행
 #개발과정에선 settings.py에 Debug가 true 로 되어 있으면 작용하지 않음.
 #실 서비스 환경을 위한 설정 항목.
-STATIC_ROOT=os.path.join(BASE_DIR,'collected_statics')
+STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 
 # STATIC_URL과 같이 url 경로를 설정해주는 항목.
