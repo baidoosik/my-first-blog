@@ -1,4 +1,4 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 	<div style="float:right;">	
@@ -14,6 +14,7 @@
                 {{ post.published_date }}
             </div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+			<p>{{ post.category|linebreaksbr }}</p>			
             <p><img src="{{ post.image_file.url }}"</p>
 			<p>{{ post.text|linebreaksbr }}</p>
 			<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>

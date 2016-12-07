@@ -1,14 +1,14 @@
 import re
 from django.contrib.auth.models import User
 from django import forms
-from .models import Post, Comment
+from .models import Post, Comment, TimeStampModel, Category
 from django.core.exceptions import ObjectDoesNotExist
 
 class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title','image_file','text',)
+        fields = ('title','category','image_file','text',)
 
 class RegistrationForm(forms.Form):
 	usename = forms.CharField(label='사용자이름',max_length=30)

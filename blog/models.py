@@ -9,14 +9,27 @@ categories.register_fk(Post, 'coffee')
 categories.register_fk(Post, 'starbucks', {'related_name':'kind1'})
 categories.register_fk(Post, 'coffeebean', {'related_name':'kind2'})
 """
+class TimeStampModel(models.Model):
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True, null=True)
 
-class Post(models.Model):
+    class Meta:
+        abstract = True
+
+class Category(TimeStampModel):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class Post(TimeStampModel):
+    category = models.ForeignKey(Category, null=True)
     author = models.ForeignKey('auth.User')
     image_file = models.ImageField(upload_to='static_files/uploaded/original/%Y/%m/%d')
     title = models.CharField(max_length=200,null=False)
     text = models.TextField()
-#    category = models.ForeignKey('categories.Category')
-    created_date = models.DateTimeField(default=timezone.now)
+
     published_date = models.DateTimeField(blank=True, null=True)
 
     # size is "width x height
@@ -29,11 +42,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-class Comment(models.Model):
+class Comment(TimeStampModel):
     post = models.ForeignKey('blog.Post', related_name='comments')
     author = models.CharField(max_length=200)
     text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
+
     approved_comment = models.BooleanField(default=False)
 
     def approve(self):

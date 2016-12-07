@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response, get_object_or_404,redirect
 from django.utils import timezone
-from .models import Post, Comment
+from .models import Post, Comment, TimeStampModel, Category
 from .forms import PostForm,CommentForm
 from django.http import HttpResponseRedirect, Http404,  HttpResponse
 from django.contrib.auth import logout
@@ -14,9 +14,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
-def first_view(request):
+def first_page(request):
     return render(request,'registration/first.html')
 
+def thankq_list_page(request):
+    return render(request,'blog/thank_list.html')
+def starbucks_list_page(request):
+    posts = Post.objects.filter(category=starbucks).order_by('published_date')
+    return render(request, 'blog/starbucks_list.html',{'posts':posts})
 
 def register_page(request):
     if request.method == "POST":

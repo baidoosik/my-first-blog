@@ -7,7 +7,9 @@ from django.conf.urls import include
 
 
 urlpatterns = [
-	url(r'^$',views.first_view,name='first_view'),
+	url(r'^$',views.first_page,name='first_view'),
+	url(r'^thankq/list$',views.thankq_list_page,name='thankq_list'),
+	url(r'^thankq/starbucks/list$',views.starbucks_list_page,name='starbucks_list'),
 	url(r'^post/list$',views.post_list, name = 'post_list'),
 	url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
 	url(r'^post/new/$', views.post_new, name='post_new'),
