@@ -19,9 +19,14 @@ def first_page(request):
 
 def thankq_list_page(request):
     return render(request,'blog/thank_list.html')
+
 def starbucks_list_page(request):
-    posts = Post.objects.filter(category=starbucks).order_by('published_date')
+    posts = Post.objects.filter(category=Category.objects.get(name='starbucks')).order_by('created_date')
     return render(request, 'blog/starbucks_list.html',{'posts':posts})
+
+def coffeebean_list_page(request):
+    posts = Post.objects.filter(category=Category.objects.get(name='coffeebean')).order_by('created_date')
+    return render(request, 'blog/coffeebean_list.html',{'posts':posts})
 
 def register_page(request):
     if request.method == "POST":
