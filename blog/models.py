@@ -21,6 +21,7 @@ class Manstyle(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
     def __str__(self):
         return self.name
 
@@ -56,6 +57,7 @@ class Man(Person):
     womanstyle = models.ForeignKey(Womanstyle, null=True)
     datestyle1 = models.ForeignKey(Datestyle1, null=False)
     datestyle2 = models.ForeignKey(Datestyle2, null=False)
+    anything = models.TextField(null=True)
 
     def __str__(self):
         return self.name
@@ -68,6 +70,7 @@ class Woman(Person):
     manstyle = models.ForeignKey(Manstyle, null=True)
     datestyle1 = models.ForeignKey(Datestyle1, null=False)
     datestyle2 = models.ForeignKey(Datestyle2, null=False)
+    anything = models.CharField(max_length=200,null=True)
 
     def __str__(self):
         return self.name

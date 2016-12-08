@@ -53,9 +53,9 @@ def woman_new(request):
         if form.is_valid():
             woman = form.save(commit=False)
             woman.save()
-            return redirect('cow/finish', pk=post.pk)
+            return redirect('cow_finish')
     else:
-        form = ManForm()
+        form = WomanForm()
     return render(request, 'cow/woman.html', {'form': form})
 def cow_finish(request):
     return render(request,'cow/finish.html')
