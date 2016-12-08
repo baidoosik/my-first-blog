@@ -89,14 +89,13 @@
 
         <!-- Projects Row -->
         <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                     <a href="{% url 'thankq_list' %}"><img class="img-responsive" src= {% static "mainimg/thank.JPG" %} alt="">
+            <div class="col-md-4 portfolio-item">             
+                <a href="{% url 'thankq_list' %}"><img class="img-responsive" src= {% static "mainimg/thank.JPG" %} alt="">
                 </a>
                 <h3>
                     <a href="{% url 'thankq_list' %}">Thank Q_쿠폰</a>
                 </h3>
-                <p>모바일 쿠폰의 혁신_Thank Q</p>
+                <p style="font-weight: bold";>모바일 쿠폰의 혁신_Thank Q<br>서비스 준비중입니다.</p>
             </div>
             <div class="col-md-4 portfolio-item">
                 <a href="https://play.google.com/store/apps/details?id=com.thankq.user.myapplication">
@@ -105,16 +104,16 @@
                 <h3>
                     <a href="https://play.google.com/store/apps/details?id=com.thankq.user.myapplication">Thank Q_화장실 앱<br>화장실 통합 솔루션!!</a>
                 </h3>
-                <p>화장실에 필요한 모든 것들! 안드로이드:화장실 앱 <br> 화장실 매너벨,카톡,유튜브,페북,웹툰,드라마,휴지가 없을 때 모든것을 하나로 제공하는 통합 솔루션! </p>
+                <p style="font-weight: bold";>화장실에 필요한 모든 것들! 안드로이드:화장실 앱 <br> 화장실 매너벨,카톡,유튜브,페북,웹툰,드라마,휴지가 없을 때 모든것을 하나로 제공하는 통합 솔루션! </p>
             </div>
             <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                <a href="{% url 'cow_list' %}">
+                    <img class="img-responsive" src={% static "mainimg/cow.jpg" %} alt="">
                 </a>
                 <h3>
-                    <a href="#">서비스 준비중</a>
+                    <a href="#">크리스마스는 내게 맡겨!</a>
                 </h3>
-                <p>서비스 준비중</p>
+                <p style="font-weight: bold";>대학생 소개팅</p>
             </div>
         </div>
         <!-- /.row -->

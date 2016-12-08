@@ -14,12 +14,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
+# 첫 페이지
 def first_page(request):
     return render(request,'registration/first.html')
 
+#thankq list 페이지
 def thankq_list_page(request):
     return render(request,'blog/thank_list.html')
 
+# 제품별 list 페이지
 def starbucks_list_page(request):
     posts = Post.objects.filter(category=Category.objects.get(name='starbucks')).order_by('created_date')
     return render(request, 'blog/starbucks_list.html',{'posts':posts})
@@ -27,6 +30,35 @@ def starbucks_list_page(request):
 def coffeebean_list_page(request):
     posts = Post.objects.filter(category=Category.objects.get(name='coffeebean')).order_by('created_date')
     return render(request, 'blog/coffeebean_list.html',{'posts':posts})
+
+def cow_list_page(request):
+    return render(request,'cow/cow_list.html')
+#소개팅 게시 페이지
+def man_new(request):
+    if request.method == "POST":
+        form = ManForm(request.POST)
+
+        if form.is_valid():
+            man = form.save(commit=False)
+            man.save()
+            return redirect('cow_finish')
+    else:
+        form = ManForm()
+    return render(request, 'cow/man.html', {'form': form})
+
+def woman_new(request):
+    if request.method == "POST":
+        form = WomanForm(request.POST)
+
+        if form.is_valid():
+            woman = form.save(commit=False)
+            woman.save()
+            return redirect('cow/finish', pk=post.pk)
+    else:
+        form = ManForm()
+    return render(request, 'cow/woman.html', {'form': form})
+def cow_finish(request):
+    return render(request,'cow/finish.html')
 
 def register_page(request):
     if request.method == "POST":

@@ -1,0 +1,12 @@
+{% extends 'base2.html' %}
+{% load static from staticfiles %}
+
+
+{% block content %}
+		<p style="font-weight: bold";"font-size:17pt";><br><br>신청이 완료됐습니다.<br><br></P>
+		<div style="float:left";>
+			<a href="{% url 'man_new' %}"><img class="img-responsive" src={% static "mainimg/man.jpg" %} alt=""></a>
+			<p style="font-weight: bold";"font-size:17pt";>> <br> 이제 설레는 마음으로 마음편히 공부하세요! </p>
+		</div>
+
+{% endblock %}

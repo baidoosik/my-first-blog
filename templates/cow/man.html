@@ -1,0 +1,14 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+    <h1><br>New Register__Man<br></h1>
+	<p><br></p>
+	<p style="font-weight: bold";>자신을 소개해주세요!</p>
+    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+		<p style="font-weight: bold";>$필독</p>
+		<p style="font-weight: bold";>Tendency ->내성적1~9외향적 ,Mystyle은 자신의 스타일입니다, major는 선호하는 전공이 있으면 적어주세요.</p>
+		<p style="font-weight: bold";>Datestyle1은 자신의 연애스타일입니다, Datestyle2는 도서관 커플, 운동커플 등과 같은 스타일입니다. </p>
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

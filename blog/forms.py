@@ -1,7 +1,7 @@
 import re
 from django.contrib.auth.models import User
 from django import forms
-from .models import Post, Comment, TimeStampModel, Category
+from .models import Post, Comment, Category, Datestyle1,Datestyle2,Man,Woman,Manstyle,Womanstyle
 from django.core.exceptions import ObjectDoesNotExist
 
 class PostForm(forms.ModelForm):
@@ -9,6 +9,18 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title','category','image_file','text',)
+
+class ManForm(forms.ModelForm):
+
+    class Meta:
+        model = Man
+        exclude = ('created_at', )
+
+class WomanForm(forms.ModelForm):
+
+    class Meta:
+        model = Woman
+        exclude = ('created_at', )
 
 class RegistrationForm(forms.Form):
 	usename = forms.CharField(label='사용자이름',max_length=30)

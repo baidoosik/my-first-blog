@@ -9,8 +9,12 @@ from django.conf.urls import include
 urlpatterns = [
 	url(r'^$',views.first_page,name='first_view'),
 	url(r'^thankq/list$',views.thankq_list_page,name='thankq_list'),
+	url(r'^cow/list$',views.cow_list_page,name='cow_list'),
 	url(r'^thankq/starbucks/list$',views.starbucks_list_page,name='starbucks_list'),
-	url(r'^thankq/coffeebean/list$',views.coffeebean_list_page,name='coffeebean_list'),	
+	url(r'^thankq/coffeebean/list$',views.coffeebean_list_page,name='coffeebean_list'),
+	url(r'^man/new$',views.man_new,name='man_new'),
+	url(r'^woman/new$',views.woman_new,name='woman_new'),
+	url(r'^cow/finish$',views.cow_finish,name='cow_finish'),
 	url(r'^post/list$',views.post_list, name = 'post_list'),
 	url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
 	url(r'^post/new/$', views.post_new, name='post_new'),
