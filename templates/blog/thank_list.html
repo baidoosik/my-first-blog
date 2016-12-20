@@ -82,13 +82,16 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Thank Q
                     <small>Our Coupon</small>
+                <small><form id="search">{%  csrf_token %} <input type="text" name ="what" maxlength="200"><input id="search_input" type="button" value="검색" class="btn" ></form></small>
                 </h1>
             </div>
+
         </div>
         <!-- /.row -->
 
         <!-- Projects Row -->
-        <div class="row">
+        <div id="list">
+        <div  class="row">
             <div class="col-md-4 portfolio-item">
                 <a href="#">
                      <a href="{% url 'starbucks_list' %}"><img class="img-responsive" src= {% static "mainimg/starbucks_list.jpg" %} alt="">
@@ -180,6 +183,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
         </div>
+        </div>
         <!-- /.row -->
 
         <hr>
@@ -230,10 +234,26 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src='{%  static "js/bootstrap.min.js" %}'></script>
+    <script>
+    $('#search_input').click(function () {
+        $.ajax({
+            url : '/search/result',
+            type: "POST",
+            data: $('#search').serialize(),
+            success : function(html2) {
+                console.log(html2); // another sanity check
+
+                $('#list').html(html2)
+            }
+        })
+    })
+
+</script>
+
 
 </body>
 

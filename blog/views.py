@@ -13,14 +13,21 @@ from django.template import Context
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+
+
+
 
 # 첫 페이지
 def first_page(request):
     return render(request,'registration/first.html')
 
+
 #thankq list 페이지
 def thankq_list_page(request):
     return render(request,'blog/thank_list.html')
+
+
 
 # 제품별 list 페이지
 def starbucks_list_page(request):
@@ -33,6 +40,9 @@ def coffeebean_list_page(request):
 
 def cow_list_page(request):
     return render(request,'cow/cow_list.html')
+
+
+
 #소개팅 게시 페이지
 def man_new(request):
     if request.method == "POST":
@@ -59,6 +69,20 @@ def woman_new(request):
     return render(request, 'cow/woman.html', {'form': form})
 def cow_finish(request):
     return render(request,'cow/finish.html')
+
+
+
+
+# Thank Q 쿠폰
+
+#검색기능.
+def search(request):
+    if request.method == "POST":
+        search_value = request.POST.get('what')
+        search_result = Post.objects.filter(title__contains=search_value)
+
+        return render(request, 'blog/search_result.html', {"posts": search_result})
+
 
 def register_page(request):
     if request.method == "POST":
@@ -88,6 +112,7 @@ def user_page(request, username):
 
     output= template.render(variables)
     return HttpResponse(output)
+
 @login_required
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
@@ -173,3 +198,5 @@ def comment_remove(request, pk):
     post_pk = comment.post.pk
     comment.delete()
     return redirect('post_detail', pk=post_pk)
+
+

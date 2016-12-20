@@ -15,6 +15,7 @@ urlpatterns = [
 	url(r'^man/new$',views.man_new,name='man_new'),
 	url(r'^woman/new$',views.woman_new,name='woman_new'),
 	url(r'^cow/finish$',views.cow_finish,name='cow_finish'),
+	url(r'^search/result$', views.search ,name='search_result'),
 	url(r'^post/list$',views.post_list, name = 'post_list'),
 	url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
 	url(r'^post/new/$', views.post_new, name='post_new'),
