@@ -86,7 +86,7 @@ def search(request):
 
 def register_page(request):
     if request.method == "POST":
-        userform = UserCreationForm(request.POST)
+        userform = RegistrationForm(request.POST)
         if userform.is_valid():
             userform.save()
 
@@ -94,7 +94,7 @@ def register_page(request):
                 reverse("login")
             )
     elif request.method == "GET":
-        userform =UserCreationForm()
+        userform =RegistrationForm()
 
     return render(request,'registration/register.html',{"userform":userform})
 
