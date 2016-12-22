@@ -82,7 +82,11 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Thank Q
                     <small>Our Coupon</small>
-                <small><form id="search">{%  csrf_token %} <input type="text" name ="what" maxlength="200"><input id="search_input" type="button" value="검색" class="btn" ></form></small>
+                    <small><form id="search">
+                        {%  csrf_token %}
+                        <input type="text" name ="what" maxlength="200">
+                        <input id="search_input" value="검색" type="submit"  class="btn" >
+                    </form></small>
                 </h1>
             </div>
 
@@ -239,7 +243,8 @@
     <!-- Bootstrap Core JavaScript -->
     <script src='{%  static "js/bootstrap.min.js" %}'></script>
     <script>
-    $('#search_input').click(function () {
+    $('#search').on('submit',function(e) {
+        e.preventDefault()
         $.ajax({
             url : '/search/result',
             type: "POST",
@@ -251,6 +256,7 @@
             }
         })
     })
+
 
 </script>
 

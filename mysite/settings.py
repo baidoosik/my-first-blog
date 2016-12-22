@@ -12,10 +12,23 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.core.exceptions import ImproperlyConfigured
+import json
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+with open(os.path.join(BASE_DIR, "envs.json")) as f:
+    envs = json.loads(f.read())
 
+def get_env(setting, envs):
+    try:
+        return envs[setting]
+    except KeyError:
+        error_msg = "set env var error at {}".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+FACEBOOK_KEY = get_env("FACEBOOK_KEY", envs)
+FACEBOOK_SECRET = get_env("FACEBOOK_SECRET", envs)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 

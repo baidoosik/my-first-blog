@@ -2,9 +2,8 @@ import re
 from django.contrib.auth.models import User
 from django import forms
 from .models import Post, Comment, Category, Datestyle1,Datestyle2,Man,Woman,Manstyle,Womanstyle
-from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.forms import UserCreationForm
-from django.core.validators import RegexValidator
+
 
 class PostForm(forms.ModelForm):
 
