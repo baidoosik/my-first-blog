@@ -1,4 +1,5 @@
 {% extends 'base2.html' %}
+{% load static from staticfiles %}
 
 {% block content %}
 	<div>
@@ -11,8 +12,18 @@
 		<p><label for="id_username">ID:</label>{{form.username}}</p>
 		<p><label for="id_password">PW:</label>{{form.password}}</p>
 		<input type= "hidden" name="next" value="/" />
-		<input type= "submit" value="로그인" />
+        <a class="btn btn-default" type= "submit" >로그인</a>
 		<a class="btn btn-default" href="{% url 'register' %}">회원가입</a>
 		</form>
+	</div>
+    <div class="login agile">
+        <div class="login-main login-agileits">
+            <h1>Login with Social ID</h1>
+            <div>
+                <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+                    <img class="img-responsive" src={% static "mainimg/facebook.jpg" %}>페이스북
+                </a>
+            </div>
+        </div>
 	</div>
 {% endblock %}
