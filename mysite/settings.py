@@ -128,7 +128,7 @@ AUTHENTICATION_BACKENDS = [
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'thankq_list'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 LOGIN_REDIRECT_URL='/'

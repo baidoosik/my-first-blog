@@ -9,7 +9,7 @@ urlpatterns = [
 	url(r'^accounts/login/$', django.contrib.auth.views.login),
     url(r'^admin/', include(admin.site.urls)),
     url(r'',include('blog.urls')),
-    url(r'', include('social.apps.django_app.urls', namespace='social')),
+    url(r'',include('social.apps.django_app.urls', namespace='social')),
 ]
 if settings.DEBUG:
     urlpatterns += static(
