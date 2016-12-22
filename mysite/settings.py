@@ -120,17 +120,18 @@ USE_TZ = True
 
 #social login
 
-AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = [
+    'social.backends.google.GoogleOAuth2',
     'social.backends.facebook.FacebookOAuth2',
-    # 'social.backends.google.GoogleOAuth2',
-    # 'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
-)
+]
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+LOGIN_REDIRECT_URL='/'
 
 # SocialLogin: Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = FACEBOOK_KEY
