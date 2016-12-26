@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import image_cropping.fields
 
+#소개팅 모델
 class Person(models.Model):
     #기본정보
     name = models.CharField(max_length=20,null=False)
@@ -74,6 +75,8 @@ class Woman(Person):
 
     def __str__(self):
         return self.name
+
+# 쿠폰 모델
 
 class TimeStampModel(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)

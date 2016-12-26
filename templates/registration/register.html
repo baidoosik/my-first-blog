@@ -7,6 +7,6 @@
 	<form id="register" method="post" action="{% url 'register' %}">
 	    {%csrf_token%}
 		{{userform.as_p}}
-		<input type="submit" value-"가입"/>
+		<input type="submit" value="가입"/>
 	</form>
 {% endblock content %}
