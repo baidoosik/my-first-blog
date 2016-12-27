@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup as bs
 import requests as req
-
+# parcing 공부
 def _search_naver(key_word):
     req1= req.get('https://search.naver.com/search.naver?where=webkr&sm=tab_jum&ie=utf8&query={}'.format(key_word))
     html =req1.text
