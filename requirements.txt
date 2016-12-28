@@ -1,0 +1,6 @@
+django==1.8
+django-debug-toolbar==1.6
+bs4==0.0.1
+python-social-auth==0.2.21
+requests==2.12.4
+Pillow==3.4.2

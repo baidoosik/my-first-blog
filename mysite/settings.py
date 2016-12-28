@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'debug_toolbar',
     'blog',
 )
 
@@ -62,6 +63,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
 
@@ -117,6 +119,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+#debug toolbar
+
+INTERNAL_IPS =['127.0.0.1',]
 
 #social login
 
