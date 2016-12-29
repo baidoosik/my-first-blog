@@ -14,6 +14,7 @@
         <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
 		<h1>{{ post.title }}</h1>
+        <p>가격: {{ post.가격|linebreaksbr }}</p>
 		<p><img src="{{ post.image_file.url }}"></p>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
