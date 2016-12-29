@@ -94,6 +94,7 @@ class Category(TimeStampModel):
 class Post(TimeStampModel):
     category = models.ForeignKey(Category, null=True)
     author = models.ForeignKey('auth.User')
+    price = models.CharField(max_length=20,null=True ,name= "가격")
     image_file = models.ImageField(upload_to='static_files/uploaded/original/%Y/%m/%d')
     title = models.CharField(max_length=200,null=False)
     text = models.TextField()

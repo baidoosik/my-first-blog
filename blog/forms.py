@@ -9,7 +9,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title','category','image_file','text',)
+        fields = ('title','category','가격','image_file','text',)
 
 # 소개팅 form
 class ManForm(forms.ModelForm):
