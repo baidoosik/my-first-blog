@@ -1,16 +1,12 @@
 from django.shortcuts import render, render_to_response, get_object_or_404,redirect
 from django.utils import timezone
-from .models import Post, Comment, TimeStampModel, Category
-from .forms import PostForm,CommentForm
+from .models import *
 from django.http import HttpResponseRedirect, Http404,  HttpResponse
 from django.contrib.auth import logout
 from blog.forms import *
-from django.template import RequestContext
 from django.template.loader import get_template
-import re
 from django.contrib.auth.models import User
 from django.template import Context
-from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -112,6 +108,7 @@ def user_page(request, username):
 
     output= template.render(variables)
     return HttpResponse(output)
+
 # draft-list 기능 삭제.
 @login_required
 def post_draft_list(request):
